@@ -5,3 +5,4 @@
 resources/
 public/
 content/publication/pulse/.DS_Store
+*.DS_Store*
