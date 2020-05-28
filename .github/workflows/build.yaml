@@ -24,12 +24,12 @@ jobs:
     - name: Build
       run: hugo
       extended: true
-    
+
     - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          external_repository: sachit-menon/sachit-menon.github.io
-          deploy_key: ${{ secrets.MACBOOK_GITHUB_KEY }}
-          publish_dir: ./public
-          user_name: 'github-actions[bot]'
-          user_email: 'github-actions[bot]@users.noreply.github.com'
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        external_repository: sachit-menon/sachit-menon.github.io
+        deploy_key: ${{ secrets.MACBOOK_GITHUB_KEY }}
+        publish_dir: ./public
+        user_name: 'github-actions[bot]'
+        user_email: 'github-actions[bot]@users.noreply.github.com'
