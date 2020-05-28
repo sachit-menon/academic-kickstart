@@ -1,4 +1,4 @@
-name: Build and Deploy
+name: github pages
 
 on:
   push:
@@ -6,29 +6,28 @@ on:
       - master
 
 jobs:
-  build:
-
-    runs-on: ubuntu-latest
-
+  deploy:
+    runs-on: ubuntu-18.04
     steps:
-    - uses: actions/checkout@v2
-      with:
-        submodules: true
+      - uses: actions/checkout@v2
+        with:
+          submodules: true  # Fetch Hugo themes (true OR recursive)
+          fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
 
-    - name: Setup Hugo
-      uses: peaceiris/actions-hugo@v2.4.8
-      with:
-        hugo-version: "latest"
-        extended: true
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: '0.71.1'
+          extended: true
 
-    - name: Build
-      run: hugo
+      - name: Build
+        run: hugo
 
-    - name: Deploy
-      uses: peaceiris/actions-gh-pages@v3
-      with:
-        external_repository: sachit-menon/sachit-menon.github.io
-        deploy_key: ${{ secrets.MACBOOK_GITHUB_KEY }}
-        publish_dir: ./public
-        user_name: 'github-actions[bot]'
-        user_email: 'github-actions[bot]@users.noreply.github.com'
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          deploy_key: ${{ secrets.MACBOOK_GITHUB_KEY }}
+          publish_dir: ./public
+          publish_branch: master
+          user_name: 'github-actions[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com'
