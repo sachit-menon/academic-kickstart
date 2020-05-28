@@ -23,7 +23,6 @@ jobs:
 
     - name: Build
       run: hugo
-      extended: true
 
     - name: Deploy
       uses: peaceiris/actions-gh-pages@v3
