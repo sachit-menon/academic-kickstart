@@ -28,6 +28,8 @@ jobs:
         with:
           deploy_key: ${{ secrets.MACBOOK_GITHUB_KEY }}
           publish_dir: ./public
+          external_repository: sachit-menon/sachit-menon.github.io
           publish_branch: master
           user_name: 'github-actions[bot]'
           user_email: 'github-actions[bot]@users.noreply.github.com'
+          
